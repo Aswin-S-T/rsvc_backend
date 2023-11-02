@@ -1,0 +1,28 @@
+version: '3'
+services:
+  mysql:
+    container_name: 'rsvc-mysql-dev'
+    image: 'mysql:latest'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'password'
+      MYSQL_DATABASE: 'rsvc_db_dev'
+    volumes:
+      - './mysql_data:/var/lib/mysql'
+    network_mode: host
+    restart: always
+
+  backend:
+    image: rsvc-backend-dev
+    container_name: rsvc-backend-dev
+    build:
+      context: ./
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/usr/app/
+      - /usr/app/node_modules
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+    restart: always
+    network_mode: host
