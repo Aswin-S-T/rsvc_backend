@@ -35,6 +35,7 @@ const firstTimeData = require('./config/firstTimeData');
 const app = express();
 
 const server = http.Server(app); // Use the existing server instance
+app.use(cors());
 const io = socketIO(server, {
   cors: {
     origin: 'https://654357d99f92cb2dc521c107--fanciful-pasca-c9a092.netlify.app/',
