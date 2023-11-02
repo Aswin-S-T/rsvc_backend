@@ -38,7 +38,7 @@ const server = http.Server(app); // Use the existing server instance
 app.use(cors());
 const io = socketIO(server, {
   cors: {
-    origin: 'https://654357d99f92cb2dc521c107--fanciful-pasca-c9a092.netlify.app/',
+    origin: 'https://65435bc58fec0a298711d4af--deluxe-brioche-1a9ed4.netlify.app',
     credentials: true,
   },
 });
